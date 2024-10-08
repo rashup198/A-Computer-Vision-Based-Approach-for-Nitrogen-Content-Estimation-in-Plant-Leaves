@@ -12,7 +12,7 @@ def create_cnn_model(input_shape):
         layers.Flatten(),
         layers.Dense(128, activation='relu'),
         layers.Dropout(0.5),
-        layers.Dense(1, activation='linear')  # Output layer for regression
+        layers.Dense(1, activation='linear')  
     ])
     
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
