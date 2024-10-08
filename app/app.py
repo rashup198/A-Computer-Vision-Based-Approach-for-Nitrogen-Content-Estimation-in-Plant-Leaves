@@ -1,12 +1,21 @@
 import sys
 import os
+
+# Add the parent directory to the system path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from flask import Flask, render_template, request, redirect, url_for, flash
 from src.predict import predict_image
 
 app = Flask(__name__)
 app.secret_key = 'b3b8e8e5f90746f9b98cf8c4ebd1c4d8'  # Set the secret key here
+
+# Define model and upload paths
 MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/cnn_model.h5")
-UPLOAD_FOLDER = 'path/to/upload/folder'  # Make sure to define UPLOAD_FOLDER
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/test")
+
+# Ensure the upload folder exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
 def index():
