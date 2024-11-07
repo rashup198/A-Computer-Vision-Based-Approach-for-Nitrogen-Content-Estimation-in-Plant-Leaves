@@ -35,7 +35,7 @@ def predict():
     file.save(file_path)
     
     prediction = predict_image(file_path, MODEL_PATH)
-    result = f"Predicted Nitrogen Content: {prediction:.2f}"
+    result = f"Predicted Nitrogen Content: {prediction:.2f} mg/g"
 
     return redirect(url_for('index', result=result))  
 
